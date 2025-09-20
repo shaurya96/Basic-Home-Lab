@@ -18,7 +18,7 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
 
 ## ⚙️ Lab Setup (Part 1)
 
-- Installed **VMWare Workstation Player 17** on host system  
+- Installed **VMWare Workstation Player 17** on the host system  
 - Verified download integrity with **SHA-256 checksums**  
 - Created two virtual machines: 
   - **Windows 10 VM** (victim machine) with **Sysmon** & **Splunk** for log collection  
@@ -81,9 +81,9 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
 - Simulated attacker vs. defender workflows to study system behavior. Steps involed
 
 - **Installation**  
-  - First, of all we will install Splunk in the windows machine  
+  - First, we will install Splunk in the windows machine  
   - In the windows VM, go to the Splunk website at [Splunk](https://splunk.com), signup and install
-  - Splunk should be installed in the windows machine at port 8000
+  - Splunk should be installed on the Windows machine and accessible at port 8000
 
     <div style="display:inline-block; text-align:center; max-width:700px;">
       <img src="assets/screenshots/6.Splunk-installed.png" alt="Splunk Installation Proof" style="max-width:100%; height:auto; display:block;" />
@@ -102,13 +102,13 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
     </div>
 
   - Now, let's move to installing [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) in the windows machine.
-    - Before installing, you might be thinking why we installed sysmon when we have Splunk already in there
+    - Before installing, you might wonder why we need Sysmon when Splunk is already installed.
       - Sysmon generates rich, granular telemetry → writes it into Windows Event Logs.
       - Without Sysmon, Splunk might only see basic Windows events (logons, service starts, etc.). With Sysmon, you now see deep telemetry like:
         - “Process resume.pdf.exe spawned cmd.exe”
         - “Outbound connection to 192.168.20.11:4444”
         - “Suspicious PowerShell command line”
-    - Once installed using the above link, let's install the [configuration file](https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml) 
+    - Once Sysmon is installed, let's install the [configuration file](https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml) 
     - Sysmon without a configuration file is almost useless, here’s why:
       - By default, if you just run `.\sysmon.exe -i`, it logs only a very limited set of events.
       - A configuration file (XML) tells Sysmon what exactly to monitor — processes, command-line arguments, network connections, registry modifications, file creation, etc.
