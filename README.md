@@ -24,12 +24,11 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
   - **Windows 10 VM** (victim machine) with **Sysmon** & **Splunk** for log collection  
   - **Kali Linux VM** (attacker machine) with penetration testing tools preinstalled  
 
-<div style="display:inline-block; text-align:center; max-width:700px;">
-  <img src="assets/screenshots/1.vmware-vms.png" alt="VMWare VMs" style="max-width:100%; height:auto; display:block;" />
-  <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-    📸 Figure-1: Screenshot of VMWare with both Windows 10 and Kali Linux VMs created
-  </p>
-</div>
+<p align="center">
+  <img src="assets/screenshots/1.vmware-vms.png" alt="VMware VMs" width="700"/><br>
+  <em>📸 Figure-1: Screenshot of VMware with both Windows 10 and Kali Linux VMs created</em>
+</p>
+
 
 ---
 
