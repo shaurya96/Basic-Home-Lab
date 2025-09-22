@@ -48,19 +48,18 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
 
 - Assigned **static IPs** to Windows (`192.168.194.152`) and Kali (`192.168.194.128`) to ensure communication  
 
-  <div style="display:inline-block; text-align:center; max-width:700px;">
-    <img src="assets/screenshots/3.windows-ipconfig.png" alt="Windows ipconfig" style="max-width:100%; height:auto; display:block;" />
-    <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-      📸 Figure-3: Screenshot of Windows `ipconfig` command showing static IP `192.168.194.152`
-    </p>
-  </div>
+  <p align="center">
+  <img src="assets/screenshots/3.windows-ipconfig.png" alt="Windows ipconfig" width="700"/><br>
+  <em>📸 Figure-3: Screenshot of Windows <code>ipconfig</code> command showing static IP <code>192.168.194.152</code></em>
+  
+  </p>
 
-  <div style="display:inline-block; text-align:center; max-width:700px;">
-    <img src="assets/screenshots/4.kali-ifconfig.png" alt="Kali ifconfig" style="max-width:100%; height:auto; display:block;" />
-    <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-      📸 Figure-4: Screenshot of Kali `ifconfig` command showing static IP `192.168.194.128`
-    </p>
-  </div>
+  <p align="center">
+  <img src="assets/screenshots/4.kali-ifconfig.png" alt="Kali ifconfig" width="700"/><br>
+  <em>📸 Figure-4: Screenshot of Kali <code>ifconfig</code> command showing static IP <code>192.168.194.128</code></em>
+ 
+ </p>
+
 
 - Validated connectivity via `ping` while keeping machines isolated from the host  
 
