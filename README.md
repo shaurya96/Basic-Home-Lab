@@ -57,18 +57,15 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
   <p align="center">
   <img src="assets/screenshots/4.kali-ifconfig.png" alt="Kali ifconfig" width="700"/><br>
   <em>📸 Figure-4: Screenshot of Kali <code>ifconfig</code> command showing static IP <code>192.168.194.128</code></em>
- 
- </p>
 
+ </p>
 
 - Validated connectivity via `ping` while keeping machines isolated from the host  
 
-  <div style="display:inline-block; text-align:center; max-width:700px;">
-    <img src="assets/screenshots/5.ping-result.png" alt="Ping Result" style="max-width:100%; height:auto; display:block;" />
-    <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-      📸 Figure-5: Screenshot of ping result from Kali VM to Windows VM
-    </p>
-  </div>
+  <p align="center">
+  <img src="assets/screenshots/5.ping-result.png" alt="Ping Result" width="700"/><br>
+  <em>📸 Figure-5: Screenshot of ping result from Kali VM to Windows VM</em>
+  </p>
 
 ---
 
@@ -81,21 +78,17 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
   - In the windows VM, go to the Splunk website at [Splunk](https://splunk.com), signup and install
   - Splunk should be installed on the Windows machine and accessible at port 8000
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-      <img src="assets/screenshots/6.Splunk-installed.png" alt="Splunk Installation Proof" style="max-width:100%; height:auto; display:block;" />
-      <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-        📸 Figure-6: Screenshot of Splunk installed
-      </p>
-    </div>
+    <p align="center">
+    <img src="assets/screenshots/6.Splunk-installed.png" alt="Splunk Installation Proof" width="700"/><br>
+    <em>📸 Figure-6: Screenshot of Splunk installed</em>
+    </p>
 
   - In Splunk Console, create a custom index named **`endpoint`** (Splunk Web → Settings → Indexes → New Index) to store host telemetry and Sysmon data.   
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-      <img src="assets/screenshots/7.splunk-endpoint-index.png" alt="Splunk Endpoint Index" style="max-width:100%; height:auto; display:block;" />
-      <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-        📸 Figure-7: Screenshot of endpoint index created in Splunk
-      </p>
-    </div>
+    <p align="center">
+    <img src="assets/screenshots/7.splunk-endpoint-index.png" alt="Splunk Endpoint Index" width="700"/><br>
+    <em>📸 Figure-7: Screenshot of endpoint index created in Splunk</em>
+    </p>
 
   - Now, let's move to installing [Sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) in the windows machine.
     - Before installing, you might wonder why we need Sysmon when Splunk is already installed.
@@ -110,30 +103,24 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
       - A configuration file (XML) tells Sysmon what exactly to monitor — processes, command-line arguments, network connections, registry modifications, file creation, etc.
     - Run sysmon with the configuration file, using the command `.\sysmon.exe -i sysmonconfig.xml`
 
-     <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/8.sysmon-installation-proof.png" alt="Sysmon installation Proof" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-8: Screenshot of Sysmon installed
-       </p>
-     </div>
+     <p align="center">
+     <img src="assets/screenshots/8.sysmon-installation-proof.png" alt="Sysmon Installation Proof" width="700"/><br>
+     <em>📸 Figure-8: Screenshot of Sysmon installed</em>
+     </p>
 
   - Configure Splunk to ingest core Windows Event Logs (Application, Security, System) and route them to the custom index names `endpoint` index (this can be done by adding `inputs.conf` entries).
     - I used this [inputs.conf](https://www.dropbox.com/scl/fi/620i6i0o4idzrtwlqp0qp/inputs.conf?rlkey=elni2v55mpzfab72qxr5wxk3s&e=1&dl=0)
     - After that, we then need to restart the `Splunkd Service`
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-     <img src="assets/screenshots/9.inputs-conf.png" alt="Inputs.conf" style="max-width:100%; height:auto; display:block;" />
-     <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-       📸 Figure-9: Screenshot of inputs.conf
-     </p>
-    </div>
+    <p align="center">
+    <img src="assets/screenshots/9.inputs-conf.png" alt="Inputs.conf" width="700"/><br>
+    <em>📸 Figure-9: Screenshot of inputs.conf</em>
+    </p>
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-     <img src="assets/screenshots/10.proof-endpoint-index-data.png" alt="Splunk Endpoint Index Data Proof" style="max-width:100%; height:auto; display:block;" />
-     <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-       📸 Figure-10: Screenshot of data being ingested at the `endpoint` index
-     </p>
-    </div>
+    <p align="center">
+    <img src="assets/screenshots/10.proof-endpoint-index-data.png" alt="Splunk Endpoint Index Data Proof" width="700"/><br>
+    <em>📸 Figure-10: Screenshot of data being ingested at the <code>endpoint</code> index</em>
+    </p>
 
   - In splunk, to parse Sysmon telemetry, we will need to install **Splunk Add-on for Sysmon**
 
@@ -142,12 +129,10 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
   - Discovered open services (e.g., RDP on port 3389)
   - However, in order to see RDP port 3389/tcp open, we need to enable Remote Desktop and allow it through the firewall.
 
-   <div style="display:inline-block; text-align:center; max-width:700px;">
-     <img src="assets/screenshots/11.nmap-result.png" alt="Nmap Scan Results" style="max-width:100%; height:auto; display:block;" />
-     <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-       📸 Figure-11: Screenshot of Nmap scan results on Kali
-     </p>
-   </div>
+   <p align="center">
+   <img src="assets/screenshots/11.nmap-result.png" alt="Nmap Scan Results" width="700"/><br>
+   <em>📸 Figure-11: Screenshot of Nmap scan results on Kali</em>
+   </p>
 
 - **Malware Creation**  
   - Generated malware using reverse TCP payload in **msfvenom**  
@@ -160,43 +145,35 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
     - `exploit`
   - We are now listening and waiting for our windows machine to execute the malware
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/12.malware-generation-and-listening.png" alt="Malware generation and listening" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-12: Screenshot of msfvenom payload generation and handler listening
-       </p>
-     </div>
+    <p align="center">
+    <img src="assets/screenshots/12.malware-generation-and-listening.png" alt="Malware generation and listening" width="700"/><br>
+    <em>📸 Figure-12: Screenshot of msfvenom payload generation and handler listening</em>
+    </p>
 
   - In other terminal window, we hosted malicious file via Python HTTP server so that our windows machine can download the malware
 
-    <div style="display:inline-block; text-align:center; max-width:700px;">
-      <img src="assets/screenshots/13.python-http-server.png" alt="Python HTTP server" style="max-width:100%; height:auto; display:block;" />
-      <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-        📸 Figure-13: Screenshot of Python HTTP server serving the payload
-      </p>
-    </div>
+    <p align="center">
+    <img src="assets/screenshots/13.python-http-server.png" alt="Python HTTP server" width="700"/><br>
+    <em>📸 Figure-13: Screenshot of Python HTTP server serving the payload</em>
+    </p>
 
   - Before downloading and executing the malware we will need to disable the Microsoft Windows Defender by turning off Real-time protection
     - We will then execute the malware on Windows 10 to establish **reverse shell** connection  
 
-     <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/14.malware-execution-proof-1.png" alt="Malware Execution" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-14: Screenshot showing malicious process executed in Windows machine (resume.pdf.exe)
-       </p>
-     </div>
+     <p align="center">
+    <img src="assets/screenshots/14.malware-execution-proof-1.png" alt="Malware Execution" width="700"/><br>
+    <em>📸 Figure-14: Screenshot showing malicious process executed in Windows machine (resume.pdf.exe)</em>
+    </p>
 
 - **Exploitation**  
   - Obtained Meterpreter shell  
   - Executed commands like `net user`, `ipconfig`, and `net localgroup`  
 
-   <div style="display:inline-block; text-align:center; max-width:700px;">
-     <img src="assets/screenshots/15.malware-execution-proof-2.png" alt="Meterpreter Shell" style="max-width:100%; height:auto; display:block;" />
-     <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-       📸 Figure-15: Screenshot of Meterpreter session with executed commands
-     </p>
-   </div>
-  
+   <p align="center">
+   <img src="assets/screenshots/15.malware-execution-proof-2.png" alt="Meterpreter Shell" width="700"/><br>
+   <em>📸 Figure-15: Screenshot of Meterpreter session with executed commands</em>
+   </p>
+
 - **Detection Engineering (Blue Team)**
 
   - `Event ID 1` -> Parent process spawning (`resume.pdf.exe → cmd.exe`)  
@@ -206,12 +183,10 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
         - Attackers often hide malware inside executables named like documents (e.g., `resume.pdf.exe`).
         - When opened, instead of showing a document, it secretly spawns `cmd.exe` or PowerShell to run attacker commands or download more malware
 
-     <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/16.splunk-proof-1.png" alt="Splunk Proof-1" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-16: Screenshot of process spawn
-       </p>
-     </div>
+     <p align="center">
+     <img src="assets/screenshots/16.splunk-proof-1.png" alt="Splunk Proof-1" width="700"/><br>
+     <em>📸 Figure-16: Screenshot of process spawn</em>
+     </p>
 
   - `Event ID 3` -> Outbound connections to Kali attacker IP  
     - **Why This Matters**
@@ -222,22 +197,18 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
           - That’s why you saw a random port in your reverse TCP connection earlier.
           - The important part is the destination (Kali:`4444`), because that’s where the attacker is listening. 
 
-     <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/17.splunk-proof-2.png" alt="Splunk Proof-2" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-17: Screenshot of network connection to Kali IP
-       </p>
-     </div>
+     <p align="center">
+     <img src="assets/screenshots/17.splunk-proof-2.png" alt="Splunk Proof-2" width="700"/><br>
+     <em>📸 Figure-17: Screenshot of network connection to Kali IP</em>
+     </p>
 
   - Using ProcessGUID, I correlated `Event ID 1` (process creation) with `Event ID 3` (network connection) to detect suspicious outbound traffic from unexpected parent-child processes.  
   - The screenshot below shows `Resume.pdf.exe` spawning `cmd.exe`, which then executed commands like `net user`, `net localgroup`, and `ipconfig`, illustrating the malicious process chain.
 
-     <div style="display:inline-block; text-align:center; max-width:700px;">
-       <img src="assets/screenshots/18.chain-of-commands.png" alt="Suspicious commands chain" style="max-width:100%; height:auto; display:block;" />
-       <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-         📸 Figure-18: Screenshot of suspicious commands chain (Resume.pdf.exe → cmd.exe → net/ipconfig)
-       </p>
-     </div>
+     <p align="center">
+     <img src="assets/screenshots/18.chain-of-commands.png" alt="Suspicious commands chain" width="700"/><br>
+     <em>📸 Figure-18: Screenshot of suspicious commands chain (Resume.pdf.exe → cmd.exe → net/ipconfig)</em>
+     </p>
 
 ---
 
