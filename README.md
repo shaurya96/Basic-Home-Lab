@@ -20,16 +20,15 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
 
 - Installed **VMWare Workstation Player 17** on the host system  
 - Verified download integrity with **SHA-256 checksums**  
-- Created two virtual machines: 
+- Created two virtual machines:
   - **Windows 10 VM** (victim machine) with **Sysmon** & **Splunk** for log collection  
   - **Kali Linux VM** (attacker machine) with penetration testing tools preinstalled  
 
 <p align="center">
   <img src="assets/screenshots/1.vmware-vms.png" alt="VMware VMs" width="700"/><br>
   <em>📸 Figure-1: Screenshot of VMware with both Windows 10 and Kali Linux VMs created</em>
+
 </p>
-
-
 ---
 
 ## 🌐 Network Configuration (Part 2)
@@ -41,12 +40,11 @@ This project builds an **isolated lab environment** using **VMWare Workstation P
   - **Custom (VMnetX)** → VM is attached to a specific virtual network you configure.  
   - **LAN segment** → Isolated network where only VMs on the same segment can communicate.  
 
-  <div style="display:inline-block; text-align:center; max-width:700px;">
-    <img src="assets/screenshots/2.nat-network-configuration.png" alt="NAT Network Configuration" style="max-width:100%; height:auto; display:block;" />
-    <p style="margin:6px 0 14px; font-style:italic; font-size:0.95em;">
-      📸 Figure-2: Screenshot of VMWare network settings (showing NAT/Internal)
-    </p>
-  </div>
+  <p align="center">
+  <img src="assets/screenshots/2.nat-network-configuration.png" alt="NAT Network Configuration" width="700"/><br>
+  <em>📸 Figure-2: Screenshot of VMware network settings (showing NAT/Internal)</em>
+
+  </p>
 
 - Assigned **static IPs** to Windows (`192.168.194.152`) and Kali (`192.168.194.128`) to ensure communication  
 
